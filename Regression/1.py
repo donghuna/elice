@@ -21,7 +21,7 @@ def load_data():
 """
 def prediction(beta_0, beta_1, X):
     
-    y_pred = None
+    y_pred = beta_0 + beta_1 * X
     
     return y_pred
     
@@ -55,10 +55,10 @@ def gradient_descent(X, y, iters, lr):
     
     for i in range(iters):
         
-        y_pred = None
+        y_pred = prediction(beta_0, beta_1, X)
         loss = np.mean(np.square(y - y_pred))
         
-        beta0_delta, beta1_delta = None
+        beta0_delta, beta1_delta = update_beta(X, y, y_pred, lr)
         
         beta_0 -= beta0_delta
         beta_1 -= beta1_delta
